@@ -22,6 +22,17 @@ describe("Ask Copper tools: edge cases", () => {
   });
 
   it("matches a color with extra spaces and odd capitalization", async () => {
+    vi.doMock("@/lib/copper/inventory", () => ({
+      readInventory: async () => [
+        {
+          sku: "CN-DSA",
+          product: "Copper Notes",
+          color: "Desert Sand",
+          units_in_stock: 92,
+          next_shipment: "2026-11-13",
+        },
+      ],
+    }));
     const { checkAvailability, checkAvailabilityInput } = await loadTools();
     const input = checkAvailabilityInput.parse({
       product: "copper-notes",

@@ -46,3 +46,6 @@ next-env.d.ts
 
 .vercel
 .env*
+
+# Supabase CLI local link notes
+supabase/.temp
